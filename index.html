@@ -12,9 +12,9 @@
 $(document).ready(function(){
  $('#load_data').click(function(){
   var imgObj = document.getElementById('output'); 
-  imgObj.src = "Logo.png";
+  imgObj.src = "Graph.jpg";
   $.ajax({
-   url:"employee.csv",
+   url:"DataDetails.csv",
    dataType:"text",
    success:function(data)
    {
@@ -451,7 +451,11 @@ table{
          <button type="button" name="load_data" id="load_data" class="btn btn-info">Refresh</button>
        </div>
        <br />
+	   <h3> Team 1 </h3>
+	<h4> Graph </h4>	
 	   <p><img id="output" width="200" /></p>
+       <h3> Team 2 </h3>
+	<h4> Details</h4>      
        <div id="employee_table">
        </div>
 	   </div>
