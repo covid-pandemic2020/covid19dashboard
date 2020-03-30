@@ -3,17 +3,39 @@
   <head>
     <title>Covid19</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.5.5/jquery.smooth-scroll.min.js"></script>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
 	<script>
 	     
 $(document).ready(function(){
- $('#load_data').click();	
+ $('#load_data').click();
+ $('.panel-collapse').on('show.bs.collapse', function () {
+    $(this).siblings('.panel-heading').addClass('active');
+  });
+
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+    $(this).siblings('.panel-heading').removeClass('active');
+  }); 
  $('#load_data').click(function(){
-  var imgObj = document.getElementById('output'); 
-  imgObj.src = "Graph.jpg";
+  var imgObj = document.getElementById('Tourism_Revenue'); 
+  imgObj.src = "Tourism_Revenue.jpg";
+  var imgObj1 = document.getElementById('WordCloud'); 
+  imgObj1.src = "Word_Cloud.jpg";
+  var imgObj2 = document.getElementById('Average_AQI'); 
+  imgObj2.src = "Average_AQI.jpg";
+  var imgObj3 = document.getElementById('Corelation_Analysis'); 
+  imgObj3.src = "Corelation_Analysis.jpg";
+  var imgObj4 = document.getElementById('LineChart'); 
+  imgObj4.src = "Line_Chart_28days.jpg";
+  var imgObj5 = document.getElementById('Polarity_Tweet'); 
+  imgObj5.src = "Polarity_Of_Tweets.jpg";
+  var imgObj6 = document.getElementById('Stock_closing'); 
+  imgObj6.src = "Stock_Closing.jpg";
+  var imgObj7 = document.getElementById('Total_confirmed'); 
+  imgObj7.src = "Total_Confirmed_Cases.jpg";
   $.ajax({
    url:"DataDetails.csv",
    dataType:"text",
@@ -396,6 +418,40 @@ table{
   margin:9%;
 }
 
+.wrapper{
+  width:70%;
+}
+@media(max-width:992px){
+ .wrapper{
+  width:100%;
+} 
+}
+.panel-heading {
+  padding: 0;
+	border:0;
+}
+.panel-title>a, .panel-title>a:active{
+	display:block;
+	padding:15px;
+  color:#555;
+  font-size:16px;
+  font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:1px;
+  word-spacing:3px;
+	text-decoration:none;
+}
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
 
 
 /* Blank lines for ease and view */
@@ -452,19 +508,92 @@ table{
          <button type="button" name="load_data" id="load_data" class="btn btn-info">Refresh</button>
        </div>
        <br />
+
+     <div class="panel-group">
+	 
+	 <div class="panel panel-default">
+      <div class="panel-heading active">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">Confirmed cases</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+		<p><img id="Total_confirmed" width="500"/>
+		Graph Of Total Confirmed Cases</p>
+		</div>
+		</div>
+		</div>
+		
+		<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2">Different Sectors</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+		<p><img id="Stock_closing" width="500"/>
+		Stock Closing Values</p>
+		<p><img id="Average_AQI" width="500"/>
+		Average AQI Of Different Cities</p>
+		<p><img id="Tourism_Revenue" width="500"/>
+		Tourism Revenues</p>
+		</div>
+		</div>
+		</div>
+		
+		<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3">Tweet Details</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+		<p><img id="WordCloud" width="500"/>
+		WordCloud Of Tweets</p>
+		<p><img id="Polarity_Tweet" width="500"/>
+		Polarity Of Tweets</p>
+		</div>
+		</div>
+		</div>
+	 
+	 <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse4">Analysis First 28 days</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">
+		<p><img id="Corelation_Analysis" width="500"/>
+		Corelation Analysis </p>
+		<p><img id="LineChart" width="500"/>
+		Graph For Visualization</p>
+		</div>
+		</div>
+		</div>
+		
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse5">Team Details</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">
 	   <h3>Country Specific Curves</h3>
 	   <h4>Here using Semiparametric Regression we are fitting country specific curves & studying differences between country specific changepoints.</h4>
 	   <h5>By Santu</h5>
-	   <p><img id="output" width="200" /></p>
+
 	   <h3>Foreign Traffic & asymptotic/symptotic infection</h3>
-	   <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may be a network models for state</h4>
+	   <h4>Working upon  the SIR fitted by UMICH group by including foreign traffic & asymptotic/symptotic infection Getting data from national level & may   be a network models for state</h4>
 	   <h5>By Moumita</h5>
 	   
 	   <h3>India Dashboard</h3>
 	   <h4>Summarization of India & various state data.</h4>
 	   <h5>By Pooja</h5>
-	   
-           <div id="employee_table"></div>
 	   
 	   <h3>Getting forecast for India</h3>
 	   <h4>Here we are adding country specific covariates & then using Bayesian structural time series model to get forecast for India</h4>
@@ -477,8 +606,18 @@ table{
 	   <h3>COVID Challenge</h3>
 	   <h4>Presenting COVID Related challenge of the GOI</h4>
 	   <h5>By Saptarsi Goswami</h5>
+		</div>
+         </div>
+       </div>
+      </div>
+
+
 	   
-	   </div>
+	   
+	   
+	   
+	   
+	  </div>
 	  </div>
 	  </div>
     <footer>
